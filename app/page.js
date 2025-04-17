@@ -18,14 +18,6 @@ const highlightBinary = (binaryStr, indexBits, offsetBits) => {
   );
 };
 
-const binaryToHex = (binaryStr) =>
-  binaryStr
-    .match(/.{1,4}/g)
-    .map(bin => parseInt(bin, 2).toString(16).toUpperCase())
-    .join('');
-
-const hexToBinary = (hexStr, bits) =>
-  parseInt(hexStr, 16).toString(2).padStart(bits, '0');
 
 const handlePageReplacement = (updatedTable, virtualPage, fifoQueue, totalFrames) => {
   const loadedPages = updatedTable.filter(e => e.present);
@@ -253,7 +245,8 @@ export default function Home() {
       <br/>
       <button className={styles.button} onClick={generatePageTable}>Generate Page Table</button>
 
-      <h2>Page Table</h2>
+      <h2>Page Table </h2>
+      <p>Drag and Drop to swap physical address</p>
       {virtualSpace > 0 && pageSize > 0 && (
         <div style={{ marginTop: '1rem', marginBottom: '0.5rem', fontFamily: 'monospace' }}>
           <strong>Address Structure:</strong>{' '}
